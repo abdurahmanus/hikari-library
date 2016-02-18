@@ -19,7 +19,8 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "impl/ViewportOverlay.h"
+#include "impl\ViewportOverlay.h"
+#include "Overlay\OgreOverlayManager.h"
 
 using namespace Ogre;
 using namespace Hikari;

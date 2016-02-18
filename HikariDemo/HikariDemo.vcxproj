@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A3D7694E-2F64-4803-A877-D1A58B43A6D9}</ProjectGuid>
+    <RootNamespace>HikariDemo</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.24720.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)objects\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+    <LibraryPath>C:\Program Files %28x86%29\Windows Kits\8.0\Lib\win8\um\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)objects\$(Configuration)\</IntDir>
+    <LibraryPath>C:\Program Files %28x86%29\Windows Kits\8.0\Lib\win8\um\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\Hikari\include;$(OGRE_HOME)include;$(OGRE_HOME)include\OGRE;$(OGRE_HOME)boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;Hikari_d.lib;OgreOverlay_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)boost\lib;$(OGRE_HOME)lib\$(Configuration);..\Hikari\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\Hikari\lib\$(Configuration)\Hikari_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OgreMain_d.dll" xcopy "$(OGRE_HOME)\bin\debug\OgreMain_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OgreOverlay_d.dll" xcopy "$(OGRE_HOME)\bin\debug\OgreOverlay_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OIS_d.dll" xcopy "$(OGRE_HOME)\bin\debug\OIS_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\RenderSystem_Direct3D9_d.dll" xcopy "$(OGRE_HOME)\bin\debug\RenderSystem_Direct3D9_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\RenderSystem_GL_d.dll" xcopy "$(OGRE_HOME)\bin\debug\RenderSystem_GL_d.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\resources.cfg" xcopy "$(ProjectDir)bin\build-common\debug\*.*" "$(TargetDir)" /s /y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\Hikari\include;$(OGRE_HOME)include;$(OGRE_HOME)include\OGRE;$(OGRE_HOME)boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;OIS.lib;Hikari.lib;OgreOverlay.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)boost\lib;$(OGRE_HOME)lib\$(Configuration);..\Hikari\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\Hikari\lib\$(Configuration)\Hikari.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OgreMain.dll" xcopy "$(OGRE_HOME)\bin\release\OgreMain.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OgreOverlay.dll" xcopy "$(OGRE_HOME)\bin\release\OgreOverlay.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\OIS.dll" xcopy "$(OGRE_HOME)\bin\release\OIS.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\RenderSystem_Direct3D9.dll" xcopy "$(OGRE_HOME)\bin\release\RenderSystem_Direct3D9.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\RenderSystem_GL.dll" xcopy "$(OGRE_HOME)\bin\release\RenderSystem_GL.dll" "$(TargetDir)" /s /y
+if not exist "$(TargetDir)\resources.cfg" xcopy "$(ProjectDir)bin\build-common\release\*.*" "$(TargetDir)" /s /y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source\HikariDemo.cpp" />
+    <ClCompile Include="source\InputManager.cpp" />
+    <ClCompile Include="source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\HikariDemo.h" />
+    <ClInclude Include="include\InputManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hikari\Hikari.vcxproj">
+      <Project>{ee63115e-70f7-49d4-badd-9c6d0f4dc295}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

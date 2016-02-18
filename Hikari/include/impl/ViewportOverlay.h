@@ -23,7 +23,8 @@
 #define __ViewportOverlay_H__
 
 #include "Ogre.h"
-#include "OgrePanelOverlayElement.h"
+#include "Overlay\OgreOverlay.h"
+#include "Overlay\OgrePanelOverlayElement.h"
 #include "Position.h"
 
 namespace Hikari {

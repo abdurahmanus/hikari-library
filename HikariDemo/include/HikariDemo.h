@@ -2,6 +2,7 @@
 #define __NaviDemo_H__
 
 #include "Ogre.h"
+#include "Overlay\OgreOverlaySystem.h"
 #include "InputManager.h"
 #include "Hikari.h"
 
@@ -10,6 +11,7 @@ class HikariDemo : public OIS::MouseListener, public OIS::KeyListener, public Og
 	Ogre::Root* root;
 	Ogre::RenderWindow* renderWin;
 	Ogre::SceneManager* sceneMgr;
+	Ogre::OverlaySystem* overlaySystem;
 	Ogre::Viewport* viewport;
 	InputManager* inputMgr;
 	Hikari::HikariManager* hikariMgr;

@@ -12,8 +12,10 @@ HikariDemo::HikariDemo() : root(0), shouldQuit(false), renderWin(0), sceneMgr(0)
 	shouldQuit = !root->showConfigDialog();
 	if(shouldQuit) return;
 
+	overlaySystem = new Ogre::OverlaySystem();
 	renderWin = root->initialise(true, "HikariDemo");
 	sceneMgr = root->createSceneManager("DefaultSceneManager");
+	sceneMgr->addRenderQueueListener(overlaySystem);
 	WindowEventUtilities::addWindowEventListener(renderWin, this);
 
 	createScene();
@@ -31,6 +33,8 @@ HikariDemo::~HikariDemo()
 		delete inputMgr;
 	if(hikariMgr)
 		delete hikariMgr;
+	if (overlaySystem)
+		delete overlaySystem;
 	if(root)
 		delete root;
 }

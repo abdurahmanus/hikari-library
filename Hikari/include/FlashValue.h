@@ -24,6 +24,7 @@
 
 #include "Ogre.h"
 #include "HikariPlatform.h"
+#include "Overlay\OgreOverlayElement.h"
 #include <vector>
 
 namespace Hikari {
