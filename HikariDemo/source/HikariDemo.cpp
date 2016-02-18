@@ -5,6 +5,7 @@ using namespace Hikari;
 
 HikariDemo::HikariDemo() : root(0), shouldQuit(false), renderWin(0), sceneMgr(0), hikariMgr(0), inputMgr(0)
 {
+	//add test comment
 	lastTime = timer.getMilliseconds();
 
 	root = new Root();
